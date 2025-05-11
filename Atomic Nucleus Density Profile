@@ -1,0 +1,19 @@
+import numpy as np
+import matplotlib.pyplot as plt
+rho_0 = 1 
+R = 6.5    
+a = 0.5   
+r = np.linspace(0, 12, 500)
+rho = rho_0 / (1 + np.exp((r - R) / a))
+plt.figure(figsize=(8, 5))
+plt.plot(r, rho, label=r'$\rho(r) = \frac{\rho_0}{1 + e^{(r - R) / a}}$', color='b', linewidth=2)
+plt.axvline(R, linestyle='--', color='r', label='Average Radius (R)')
+plt.axhline(rho_0 / 2, linestyle='--', color='g', label=r'$\rho_0 / 2$')
+plt.axvline(R + a * np.log(12), linestyle='--', color='purple', label='Surface Thickness')
+plt.axvline(R - a * np.log(12), linestyle='--', color='purple')
+plt.xlabel('r (fm)')
+plt.ylabel(r'Density $\rho(r)$')
+plt.title('Atomic Nucleus Density Profile')
+plt.legend()
+plt.grid()
+plt.show()
